@@ -11,12 +11,13 @@ services:
     depends_on:
       - db
   db:
-    image: postgres:15.2-alpine
+    image: "mariadb"
     restart: always
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: database
-      POSTGRES_HOST_AUTH_METHOD: trust
     ports:
-      - '5432:5432'
+      - 3306:3306
+    environment:
+      MARIADB_PASSWORD: password
+      MARIADB_USER: user
+      MARIADB_ROOT_PASSWORD: password
+      MARIADB_DATABASE: database
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "true"

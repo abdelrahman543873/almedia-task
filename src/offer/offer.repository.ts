@@ -13,4 +13,8 @@ export class OfferRepository {
   addOffers(offer: IOffer[]) {
     return this.offer.insert(offer);
   }
+
+  findOne(id: number) {
+    return this.offer.findOne({ where: { id } });
+  }
 }
