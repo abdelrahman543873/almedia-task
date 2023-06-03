@@ -1,22 +1,34 @@
 import { Expose, Type } from 'class-transformer';
-import { ValidateNested } from 'class-validator';
+import { IsNotEmpty, IsString, ValidateNested } from 'class-validator';
 class Offer {
   @Expose({ name: 'offer_id' })
+  @IsString()
+  @IsNotEmpty()
   externalOfferId: string;
 
   @Expose({ name: 'offer_name' })
+  @IsString()
+  @IsNotEmpty()
   name: string;
 
   @Expose({ name: 'offer_desc' })
+  @IsString()
+  @IsNotEmpty()
   description: string;
 
   @Expose({ name: 'call_to_action' })
+  @IsString()
+  @IsNotEmpty()
   requirements: string;
 
   @Expose({ name: 'offer_url' })
+  @IsString()
+  @IsNotEmpty()
   offerUrlTemplate: string;
 
   @Expose({ name: 'image_url' })
+  @IsString()
+  @IsNotEmpty()
   thumbnail: string;
 
   @Expose()

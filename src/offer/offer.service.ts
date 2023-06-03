@@ -4,6 +4,7 @@ import { Offer1Serialization } from './serializations/offer1.serialization';
 import { randomUUID } from 'crypto';
 import { Offer2Serialization } from './serializations/offer2.serialization';
 import { OfferRepository } from './offer.repository';
+import { validateOrReject, validateSync } from 'class-validator';
 
 @Injectable()
 export class OfferService {
@@ -17,6 +18,7 @@ export class OfferService {
         strategy: 'excludeAll',
       },
     );
+    await validateOrReject(offersResponseDTO);
     const offers = offersResponseDTO.response.offers.map((offer) => {
       return {
         slug: randomUUID(),
@@ -45,6 +47,7 @@ export class OfferService {
           strategy: 'excludeAll',
         },
       );
+      validateSync(offer);
       return {
         providerName: 'provider2',
         slug: randomUUID(),
