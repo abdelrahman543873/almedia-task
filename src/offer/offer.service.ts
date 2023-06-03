@@ -20,7 +20,7 @@ export class OfferService {
     const offers = offersResponseDTO.response.offers.map((offer) => {
       return {
         slug: randomUUID(),
-        providerName: 'offer1',
+        providerName: 'provider1',
         externalOfferId: offer.externalOfferId,
         name: offer.name,
         description: offer.description,
@@ -46,6 +46,8 @@ export class OfferService {
         },
       );
       return {
+        providerName: 'provider2',
+        slug: randomUUID(),
         externalOfferId: offer.Offer.externalOfferId,
         name: offer.Offer.name,
         description: offer.Offer.description,
