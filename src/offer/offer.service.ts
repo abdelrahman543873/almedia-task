@@ -47,7 +47,10 @@ export class OfferService {
           strategy: 'excludeAll',
         },
       );
-      validateSync(offer);
+      if (validateSync(offer).length) {
+        console.log('invalid offer');
+        return;
+      }
       return {
         providerName: 'provider2',
         slug: randomUUID(),
